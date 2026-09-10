@@ -16,21 +16,23 @@
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--txt);font-family:'DM Sans',sans-serif;line-height:1.55}
-  .wrap{max-width:960px;margin:0 auto;padding:2.2rem 1.4rem 5rem}
+  .wrap{max-width:1000px;margin:0 auto;padding:2.2rem 1.4rem 5rem}
   .skip{position:absolute;left:-9999px}
   .skip:focus{left:1rem;top:1rem;background:var(--surface);padding:.5rem .8rem;z-index:9}
   .top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:2.4rem}
   .brand{display:flex;align-items:center;gap:.6rem;font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-  .mark{width:34px;height:34px;border-radius:50%;background:var(--txt);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:13px}
+  .brand a{display:inline-flex;align-items:center}
+  .topbar-logo{height:28px;width:auto;display:block}
+  .topbar-name{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--txt)}
   .progress{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
   .eyebrow{font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--o);margin:0 0 .6rem}
   h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.3rem,6vw,3.6rem);line-height:1.03;margin:0 0 .9rem;letter-spacing:.01em}
   h1:focus{outline:none}
-  h2{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin:0 0 .5rem}
-  .lead{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--soft);max-width:60ch;margin:0 0 1.6rem}
+  h2{font-family:'Oswald',sans-serif;font-size:1.15rem;font-weight:600;margin:1.8rem 0 .5rem}
+  .lead{font-family:'EB Garamond',serif;font-style:italic;font-size:1.25rem;color:var(--soft);max-width:60ch;margin:0 0 1.2rem}
   p{margin:0 0 1rem;max-width:68ch}
   .rule{height:2px;background:var(--o);width:64px;margin:1.6rem 0}
-  .notice{background:#FCF6EA;border:1px solid #E9D9AE;border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;font-size:.92rem;color:#5b4a1f;margin:0 0 1.6rem;max-width:none}
+  .notice{background:#FCF6EA;border:1px solid #E9D9AE;border-left:4px solid var(--amber);border-radius:8px;padding:.9rem 1.1rem;font-size:.92rem;color:#5b4a1f;margin:0 0 1.4rem;max-width:none}
   .small{font-size:.86rem;color:var(--muted)}
   .btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--o);color:#fff;border:0;border-radius:8px;padding:.8rem 1.3rem;font-family:'Oswald',sans-serif;font-size:14px;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;text-decoration:none}
   .btn:hover{background:var(--o-hover)}
@@ -39,15 +41,23 @@
   .btn.ghost:hover{background:var(--surface)}
   .actions{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:1.6rem}
 
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.2rem}
-  @media (max-width:820px){.grid{grid-template-columns:1fr}}
+  /* rank step */
+  .instr{display:flex;align-items:center;gap:.8rem;background:var(--txt);color:#fff;border-radius:10px;padding:.9rem 1.1rem;margin:0 0 1rem;font-family:'Oswald',sans-serif;font-size:1.02rem;letter-spacing:.02em}
+  .instr .n{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:#F3B08A;line-height:1}
+  .slots{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:0 0 1.2rem}
+  .slot{border:1px dashed var(--border-strong);border-radius:10px;padding:.65rem .85rem;min-height:3.6rem;display:flex;flex-direction:column;justify-content:center;gap:.15rem}
+  .slot b{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--o);font-weight:600}
+  .slot span{font-family:'Oswald',sans-serif;font-size:.95rem;color:var(--muted)}
+  .slot.filled{border-style:solid;border-color:var(--txt);background:var(--surface)}
+  .slot.filled span{color:var(--txt);font-weight:500}
+
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:.4rem}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;position:relative;text-align:left}
   .card.pick{cursor:pointer}
   .card.pick:hover{border-color:var(--o)}
   .card.pick:focus-visible{outline:3px solid var(--o);outline-offset:2px}
-  .card.picked{border-color:var(--o);box-shadow:inset 0 0 0 1px var(--o)}
-  .place{position:absolute;top:.7rem;left:.7rem;z-index:2;background:var(--o);color:#fff;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .55rem;border-radius:999px}
-  .place.actual{background:var(--txt)}
+  .card.picked{border-color:var(--txt);box-shadow:inset 0 0 0 1px var(--txt)}
+  .place{position:absolute;top:.7rem;left:.7rem;z-index:2;background:var(--txt);color:#fff;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .6rem;border-radius:999px}
   .video{position:relative;aspect-ratio:16/9;background:#111;display:block;width:100%;border:0;padding:0;cursor:pointer}
   .video img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92}
   .video .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
@@ -65,17 +75,38 @@
   .stat .fig{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;line-height:1;color:var(--o)}
   .stat.measure .fig{color:var(--txt)}
   .stat .cap{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:.25rem}
-  .yours{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px dashed var(--border);padding-top:.6rem}
-  .verdict{font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--txt);margin:1.4rem 0 .4rem}
+  .verdict{font-family:'EB Garamond',serif;font-style:italic;font-size:1.3rem;color:var(--txt);margin:1.2rem 0 .4rem}
 
-  .opts{display:flex;flex-direction:column;gap:.7rem;margin-top:1rem;max-width:720px}
+  /* podium */
+  .podium{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:1rem;align-items:end;margin-top:1rem}
+  .pcol{display:flex;flex-direction:column;gap:.6rem}
+  .phead{display:flex;align-items:baseline;gap:.6rem}
+  .pnum{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;line-height:1;color:var(--muted)}
+  .p1 .pnum{font-size:4.4rem;color:var(--o)}
+  .plabel{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .p1 .plabel{color:var(--o);font-weight:600}
+  .p1 .card,.p1 .tile{border-color:var(--o);box-shadow:0 0 0 1px var(--o)}
+  .platform{height:16px;background:var(--border-strong);border-radius:4px 4px 0 0}
+  .p2 .platform{height:34px;background:var(--muted)}
+  .p1 .platform{height:56px;background:var(--o)}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .7rem;border-radius:999px;border:1px solid var(--border-strong);align-self:flex-start}
+  .chip.ok{background:var(--txt);color:#fff;border-color:var(--txt)}
+  .chip.no{background:#FFF1E8;color:#9a3d05;border-color:#F3B08A}
+  .podium.compact{grid-template-columns:1.15fr 1fr 1fr}
+  .tile{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:.8rem .95rem;display:flex;flex-direction:column;gap:.35rem}
+  .tile .name{font-size:.98rem}
+  .tile .fig{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;line-height:1;color:var(--txt)}
+  .p1 .tile .fig{color:var(--o);font-size:2rem}
+  .tile .cap{font-family:'Oswald',sans-serif;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+  .opts{display:flex;flex-direction:column;gap:.7rem;margin-top:1rem;max-width:760px}
   .opt{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.1rem;text-align:left;font:inherit;font-size:1rem;color:var(--txt);cursor:pointer;display:flex;gap:.8rem;align-items:flex-start}
   .opt:hover{border-color:var(--o)}
   .opt[aria-pressed="true"]{border-color:var(--o);box-shadow:inset 0 0 0 1px var(--o)}
   .opt .k{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--o);line-height:1.2;min-width:1.2rem}
-  .opt .of{display:block;font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
+  .opt .of{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.45rem}
   .opt.win{border-color:var(--o);background:#FFF6F0}
-  .opt.mine.win .of{color:var(--o)}
+  div.opt{cursor:default}
 
   .panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.3rem 1.4rem;margin-top:1.4rem;max-width:760px}
   .panel .lbl{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--o);margin:0 0 .5rem}
@@ -83,13 +114,10 @@
   .panel a{color:var(--o)}
   .approval{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-top:.8rem}
 
-  .log{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface);margin-top:1.2rem;max-width:760px}
-  .log .row{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:.8rem;padding:.9rem 1.1rem;border-bottom:1px solid var(--border);align-items:center;font-size:.95rem}
-  .log .row:last-child{border-bottom:0}
-  .log .row.h{font-family:'Oswald',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
-  .ok{color:var(--o);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-  .no{color:var(--muted);font-family:'Oswald',sans-serif;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
-  @media (max-width:640px){.log .row{grid-template-columns:1fr;gap:.2rem}}
+  .roundblock{border-top:1px solid var(--border);padding-top:1.4rem;margin-top:1.6rem}
+  .roundblock h2{margin-top:0}
+  .reason{display:flex;align-items:center;gap:.7rem;margin-top:.9rem;font-size:.95rem}
+  .reason b{font-family:'Oswald',sans-serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
 
   .cta{background:var(--txt);color:#fff;border-radius:14px;padding:2rem 1.8rem;margin-top:2.4rem;max-width:760px}
   .cta .eyebrow{color:#F3B08A}
@@ -97,6 +125,12 @@
   .cta p{color:#D9D3CA}
   footer{margin-top:3rem;padding-top:1.4rem;border-top:1px solid var(--border);font-size:.85rem;color:var(--muted)}
   footer a{color:inherit}
+
+  @media (max-width:820px){
+    .grid,.slots,.podium,.podium.compact{grid-template-columns:1fr;align-items:stretch}
+    .platform{display:none}
+    .p1 .pnum{font-size:3.4rem}
+  }
   @media print{.btn,.actions,.video .play,footer{display:none!important}.cta{background:#fff;color:#000;border:1px solid #999}.cta p{color:#000}}
 </style>
 </head>
@@ -104,7 +138,17 @@
 <a class="skip" href="#main">Skip to content</a>
 <div class="wrap">
   <div class="top">
-    <div class="brand"><div class="mark">T</div><span id="brand"></span></div>
+    <div class="brand">
+      <a href="https://www.talexmedia.com" target="_blank" rel="noopener">
+        <img class="topbar-logo"
+          src="https://static.wixstatic.com/media/3c6878_456d81e9cdb84e6c8bb3260ebfcc0523~mv2.png"
+          alt="Talex Media"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'"
+        />
+        <span class="topbar-name" style="display:none">TALEX MEDIA</span>
+      </a>
+      <span id="brand" hidden></span>
+    </div>
     <div class="progress" id="progress"></div>
   </div>
   <main id="main"></main>
@@ -141,6 +185,8 @@
     return round.blocks.slice().sort(function(a, b){ return num(measureOf(round, b)[0]) - num(measureOf(round, a)[0]); });
   }
   function ordinal(i){ return C.ordinals[i]; }
+  function cap(s){ return s.charAt(0).toUpperCase() + s.slice(1); }
+  function roundLabel(){ return fill(C.roundLabel, { n:S.round + 1, total:R.length }); }
   function focusTitle(){ var h = main.querySelector('h1'); if (h) { h.setAttribute('tabindex', '-1'); try { h.focus({ preventScroll:true }); } catch (e) { h.focus(); } } window.scrollTo(0, 0); }
 
   /* ---------- video facade ---------- */
@@ -166,7 +212,7 @@
     var b = B[id];
     var c = el('div', 'card' + (opts.pickable ? ' pick' : '') + (opts.picked ? ' picked' : ''));
     if (opts.pickable) { c.setAttribute('role', 'button'); c.tabIndex = 0; c.setAttribute('aria-pressed', opts.picked ? 'true' : 'false'); }
-    if (opts.badge) c.appendChild(el('span', 'place' + (opts.badgeActual ? ' actual' : ''), opts.badge));
+    if (opts.badge) c.appendChild(el('span', 'place', opts.badge));
     c.appendChild(video(id));
     var body = el('div', 'body');
     body.appendChild(html('div', 'scale', b.scale));
@@ -181,9 +227,35 @@
       });
       body.appendChild(st);
     }
-    if (opts.yours) body.appendChild(el('div', 'yours', opts.yours));
     c.appendChild(body);
     return c;
+  }
+
+  /* ---------- the "you said" chip ---------- */
+  function chip(order, ranks, id){
+    var real = order.indexOf(id), said = ranks.indexOf(id), right = real === said;
+    return el('span', 'chip ' + (right ? 'ok' : 'no'), right ? fill(C.youSaidRight, { place:ordinal(said) }) : fill(C.youSaidWrong, { place:ordinal(said), real:ordinal(real) }));
+  }
+
+  /* ---------- podium: real order, first place biggest, chip on each ---------- */
+  function podium(round, order, ranks, compact){
+    var w = el('div', 'podium' + (compact ? ' compact' : ''));
+    order.forEach(function(id, i){
+      var col = el('div', 'pcol p' + (i + 1));
+      var head = el('div', 'phead'); head.appendChild(el('span', 'pnum', String(i + 1))); head.appendChild(el('span', 'plabel', cap(ordinal(i)))); col.appendChild(head);
+      if (compact) {
+        var t = el('div', 'tile'), m = measureOf(round, id);
+        t.appendChild(el('div', 'name', nameOf(id)));
+        t.appendChild(el('div', 'fig', m[0])); t.appendChild(el('div', 'cap', m[1]));
+        col.appendChild(t);
+      } else {
+        col.appendChild(card(round, id, { stats:true }));
+      }
+      col.appendChild(chip(order, ranks, id));
+      col.appendChild(el('div', 'platform'));
+      w.appendChild(col);
+    });
+    return w;
   }
 
   /* ---------- screens ---------- */
@@ -207,13 +279,21 @@
   function rank(){
     var r = R[S.round];
     if (!S.display[S.round]) S.display[S.round] = shuffle(r.blocks);
-    progress(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.rankStep);
-    header(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.rankStep, r.job, fill(C.rankLead, { measure:r.measure }));
-    main.appendChild(el('p', 'notice', C.measureNote));
+    progress(roundLabel() + ' · ' + C.rankStep);
+    header(roundLabel() + ' · ' + C.rankStep, r.job, fill(C.rankLead, { measure:r.measure }));
+    var ins = el('div', 'instr'); ins.appendChild(el('span', 'n', String(S.ranks.length + 1 > 3 ? 3 : S.ranks.length + 1))); ins.appendChild(el('span', null, C.rankInstruction)); main.appendChild(ins);
+    var slots = el('div', 'slots');
+    for (var i = 0; i < 3; i++) {
+      var s = el('div', 'slot' + (S.ranks[i] ? ' filled' : ''));
+      s.appendChild(el('b', null, cap(ordinal(i))));
+      s.appendChild(el('span', null, S.ranks[i] ? nameOf(S.ranks[i]) : C.slotEmpty));
+      slots.appendChild(s);
+    }
+    main.appendChild(slots);
     var g = el('div', 'grid');
     S.display[S.round].forEach(function(id){
       var pos = S.ranks.indexOf(id);
-      var c = card(r, id, { pickable:pos === -1, picked:pos !== -1, badge:pos === -1 ? null : ordinal(pos) });
+      var c = card(r, id, { pickable:pos === -1, picked:pos !== -1, badge:pos === -1 ? null : cap(ordinal(pos)) });
       if (pos === -1) {
         var choose = function(){ if (S.ranks.length < 3 && S.ranks.indexOf(id) === -1) { S.ranks.push(id); render(); } };
         c.addEventListener('click', choose);
@@ -222,6 +302,7 @@
       g.appendChild(c);
     });
     main.appendChild(g);
+    main.appendChild(el('p', 'small', C.measureNote)).style.marginTop = '1rem';
     var a = el('div', 'actions');
     var lock = el('button', 'btn', C.lock); lock.type = 'button'; lock.disabled = S.ranks.length < 3;
     lock.addEventListener('click', function(){ if (S.ranks.length === 3) go('reveal'); });
@@ -233,19 +314,13 @@
   function reveal(){
     var r = R[S.round], order = trueOrder(r), winner = order[0];
     var got = S.ranks[0] === winner;
-    if (S.log.length === S.round) S.log.push({ round:S.round, winner:winner, gotWinner:got, gotWhy:null });
-    if (got && !S.log[S.round].counted) { S.score += 1; }
-    S.log[S.round].counted = true;
-    progress(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.revealStep);
-    header(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.revealStep, r.job, null);
+    if (S.log.length === S.round) { S.log.push({ round:S.round, winner:winner, gotWinner:got, gotWhy:null, ranks:S.ranks.slice() }); if (got) S.score += 1; }
+    progress(roundLabel() + ' · ' + C.revealStep);
+    header(roundLabel() + ' · ' + C.revealStep, r.job, null);
     var pickPlace = order.indexOf(S.ranks[0]);
     main.appendChild(el('p', 'verdict', got ? C.calledWinner : fill(C.missedWinner, { pick:nameOf(S.ranks[0]), place:ordinal(pickPlace) })));
-    main.appendChild(el('p', 'small', C.measureNote));
-    var g = el('div', 'grid');
-    order.forEach(function(id, i){
-      g.appendChild(card(r, id, { stats:true, badge:ordinal(i), badgeActual:true, yours:fill(C.yourPick, { place:ordinal(S.ranks.indexOf(id)) }) }));
-    });
-    main.appendChild(g);
+    main.appendChild(podium(r, order, S.ranks, false));
+    main.appendChild(el('p', 'small', C.measureNote)).style.marginTop = '1rem';
     var a = el('div', 'actions'); var b = el('button', 'btn', C.whyStep); b.type = 'button';
     b.addEventListener('click', function(){ go('why'); }); a.appendChild(b); main.appendChild(a);
   }
@@ -253,8 +328,8 @@
   function why(){
     var r = R[S.round], winner = trueOrder(r)[0];
     if (!S.optOrder[S.round]) S.optOrder[S.round] = shuffle(r.why.options.map(function(_, i){ return i; }));
-    progress(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.whyStep);
-    header(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.whyStep, r.why.question, fill(C.whyLead, { winner:nameOf(winner) }));
+    progress(roundLabel() + ' · ' + C.whyStep);
+    header(roundLabel() + ' · ' + C.whyStep, r.why.question, fill(C.whyLead, { winner:nameOf(winner) }));
     var o = el('div', 'opts');
     S.optOrder[S.round].forEach(function(idx, k){
       var opt = r.why.options[idx];
@@ -270,19 +345,25 @@
   }
 
   function whyreveal(){
-    var r = R[S.round], winner = trueOrder(r)[0], pick = r.why.options[S.whyPick], right = pick.block === winner;
-    if (S.log[S.round].gotWhy === null) { S.log[S.round].gotWhy = right; if (right) S.score += 1; }
-    progress(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.whyRevealStep);
-    header(fill(C.roundLabel, { n:S.round + 1, total:R.length }) + ' · ' + C.whyRevealStep, r.why.question, null);
+    var r = R[S.round], order = trueOrder(r), winner = order[0], pick = r.why.options[S.whyPick], right = pick.block === winner;
+    if (S.log[S.round].gotWhy === null) { S.log[S.round].gotWhy = right; S.log[S.round].whyPick = S.whyPick; if (right) S.score += 1; }
+    progress(roundLabel() + ' · ' + C.whyRevealStep);
+    header(roundLabel() + ' · ' + C.whyRevealStep, r.job, null);
     main.appendChild(el('p', 'verdict', right ? fill(C.whyRight, { winner:nameOf(winner) }) : fill(C.whyWrong, { other:nameOf(pick.block), winner:nameOf(winner) })));
+    main.appendChild(el('h2', null, C.realOrder));
+    main.appendChild(podium(r, order, S.ranks, true));
+    main.appendChild(el('h2', null, r.why.question));
     var o = el('div', 'opts');
     S.optOrder[S.round].forEach(function(idx, k){
       var opt = r.why.options[idx], isWin = opt.block === winner, mine = idx === S.whyPick;
-      var b = el('div', 'opt' + (isWin ? ' win' : '') + (mine ? ' mine' : ''));
+      var b = el('div', 'opt' + (isWin ? ' win' : ''));
       b.appendChild(el('span', 'k', String.fromCharCode(65 + k)));
       var t = el('span'); t.appendChild(document.createTextNode(opt.text));
-      t.appendChild(el('span', 'of', fill(C.optionTrueOf, { name:nameOf(opt.block) })));
-      b.appendChild(t); o.appendChild(b);
+      var of = el('span', 'of');
+      of.appendChild(el('span', 'chip', fill(C.optionTrueOf, { name:nameOf(opt.block) })));
+      if (isWin) of.appendChild(el('span', 'chip ok', C.winnerFact));
+      if (mine) of.appendChild(el('span', 'chip ' + (right ? 'ok' : 'no'), C.yourAnswer));
+      t.appendChild(of); b.appendChild(t); o.appendChild(b);
     });
     main.appendChild(o);
     var src = el('div', 'panel'); src.appendChild(el('p', 'lbl', C.sourceLabel));
@@ -298,17 +379,19 @@
   function result(){
     progress(C.resultStep);
     header(C.resultStep, fill(C.resultHeading, { n:S.score }), C.resultSub);
-    var log = el('div', 'log');
-    var h = el('div', 'row h'); h.appendChild(el('span', null, C.logWinner)); h.appendChild(el('span', null, C.logWinner)); h.appendChild(el('span', null, C.logWhy)); log.appendChild(h);
-    S.log.forEach(function(L){
-      var row = el('div', 'row');
-      row.appendChild(el('span', null, R[L.round].job));
-      var w = el('span', null, nameOf(L.winner) + ' · '); w.appendChild(el('span', L.gotWinner ? 'ok' : 'no', L.gotWinner ? C.logRight : C.logMissed)); row.appendChild(w);
-      row.appendChild(el('span', L.gotWhy ? 'ok' : 'no', L.gotWhy ? C.logRight : C.logMissed));
-      log.appendChild(row);
-    });
-    main.appendChild(log);
     main.appendChild(el('p', 'verdict', S.score >= C.highFrom ? C.resultHigh : C.resultLow));
+    S.log.forEach(function(L){
+      var r = R[L.round], order = trueOrder(r);
+      var blk = el('div', 'roundblock');
+      blk.appendChild(el('p', 'eyebrow', fill(C.roundLabel, { n:L.round + 1, total:R.length })));
+      blk.appendChild(el('h2', null, r.job));
+      blk.appendChild(podium(r, order, L.ranks, true));
+      var re = el('div', 'reason'); re.appendChild(el('b', null, C.reasonRow + ':'));
+      re.appendChild(el('span', 'chip ' + (L.gotWhy ? 'ok' : 'no'), L.gotWhy ? C.logRight : C.logMissed));
+      re.appendChild(el('span', null, r.why.options.filter(function(o){ return o.block === L.winner; })[0].text));
+      blk.appendChild(re);
+      main.appendChild(blk);
+    });
     var cta = el('div', 'cta');
     cta.appendChild(el('p', 'eyebrow', C.brand));
     cta.appendChild(el('h2', null, C.cta.heading));

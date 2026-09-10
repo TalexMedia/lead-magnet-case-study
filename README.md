@@ -27,10 +27,14 @@ Built 2026-09-09 from Tom's feedback on the 9 September call. Prototype. Not dep
 
 ## How a round works
 
-1. **Rank.** Three cards: the video, the format line and the episode length, all verbatim from the block. Numbers are hidden. The visitor clicks cards in order.
-2. **What actually happened.** The cards sort into their real order and the numbers appear. The visitor sees where their pick came.
-3. **What did the winner do?** One question, three sourced facts, pick one.
-4. **What set the winner apart.** Each fact is attributed to the series it belongs to. The winner's source note, with its link, is shown. Then a short prepared takeaway, labelled for Tom's review.
+1. **Rank.** An instruction bar ("Click the cards below in order: first, then second, then third") and three slots that fill with the series name as each card is clicked. Cards carry the video, the format line and the episode length, all verbatim from the block. Numbers are hidden.
+2. **The real order.** A podium: the three in their sourced order, one to three left to right, first place larger with the tallest platform. Every card carries a chip reading "You said second. Real place: first." or "You said third. Right." so the visitor's ranking sits beside the real one.
+3. **What did the winner do?** One question, three sourced facts, pick one. The winner is named first, per Tom's flow, so this is a second test rather than the same guess again.
+4. **What set the winner apart.** The podium again in compact form, then each fact attributed to its series with "The winner's fact" and "Your answer" chips, the winner's source note with its link, and a short prepared takeaway labelled for Tom's review.
+
+Evan's 2026-09-10 design pass asked for the clearer rank instruction and the podium. The result page repeats the compact podium for each round with a reason row.
+
+The top-left mark is the locked Talex topbar logo from `video-simple.html` (the Wix-hosted PNG with the text fallback), not a placeholder.
 
 Score: one for the winner, one for the reason, six in total. The result page lists all three rounds and shows one of two prepared closings.
 
