@@ -79,6 +79,8 @@ const COPY = {
   rankStep: 'Rank',
   rankLead: 'Rank the three by {measure}.',
   rankInstruction: 'Click the cards below in order: first, then second, then third.',
+  rankUndo: 'Click a picked card, or its slot, to undo that pick.',
+  slotRemove: 'Remove {name} from {place} place',
   slotEmpty: 'Click a card',
   realOrder: 'The real order',
   youSaidRight: 'You said {place}. Right.',
