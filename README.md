@@ -37,6 +37,18 @@ Evan's 2026-09-10 design pass asked for the clearer rank instruction and the pod
 
 The top-left mark is the locked Talex topbar logo from `video-simple.html` (the Wix-hosted PNG with the text fallback), not a placeholder.
 
+## Motion and finish (Evan's 2026-09-10 "more premium" pass)
+
+Brand unchanged: same palette tokens, fonts and logo. What changed is depth, radius and motion.
+
+- Surfaces carry layered shadows and 16px radii; buttons are pills with press feedback; the video facade has a frosted glass play button and a bottom scrim; the header is frosted and sticky with a thin orange progress bar tracking the thirteen steps.
+- Every place is the same orange numeral in a circle: on the picked card (large, white ring, pops in), in the slot, and on the podium (largest on first place).
+- Picking a card: the card settles, the numeral pops, the slot's name slides in. Only the newest pick animates; re-renders from a pick or an undo do not replay the entrance motion.
+- Screen changes fade out, then children rise in with a stagger.
+- The winner reveal is a sequence: third rises first, then second, then first lands last; platforms grow up from the floor in the same order; the winner's numeral pops and rings, a spotlight fades in behind it, the card pulses once, and the measured figures count up. Compact recaps read in plain order.
+- `prefers-reduced-motion` switches all of it off. The count-up skips when the tab is hidden and has a timer fallback, so a figure is never left at zero.
+- Verification note: the Browser pane is usually a hidden tab, which freezes CSS animations and frame callbacks. Motion was verified from the declared animation names and delays via computed styles, plus logic, layout and console; playback itself needs a visible tab.
+
 Score: one for the winner, one for the reason, six in total. The result page lists all three rounds and shows one of two prepared closings.
 
 ## What is still open
