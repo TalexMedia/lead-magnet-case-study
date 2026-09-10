@@ -1,0 +1,43 @@
+# Which one worked best? (v8, the self-guided case study)
+
+Built 2026-09-09 from Tom's feedback on the 9 September call. Prototype. Not deployed.
+
+## What Tom said, and what each point changed
+
+| Tom's feedback | What we built |
+|---|---|
+| "Everybody sends out case studies. What if we built a self-guided case study?" | The whole tool. Three rounds, each a case study the visitor works through instead of reads. |
+| "Here's three examples of content designed to do the same thing. First we ask them to rank them." | Every round is three real series from the approved block library that share one job (prove a product; comedy for the people you sell to; one person tells their own story). Step one is ranking. |
+| "Then we reveal which one actually was more effective." | Step two shows the sourced numbers and sorts the cards into their real order. The page ranks by the number in the block's stats. No one picks a winner by hand. |
+| "Then they select from a multiple choice why, and we reveal whether their assumptions were correct." | Step three is one question, three options. Every option is a sourced fact about one of the three series. One is true of the winner, two are true of the others. Step four attributes all three and shows the winner's source note. |
+| "It works either way: it either reinforces that they get it, or it shows them they need an expert." | Two prepared closings. Four or more of six right gets one, three or fewer gets the other. Neither one criticises the visitor. |
+| Evan: "There should be a right answer. Otherwise what is the point?" | Each round names its measure (views, read on the same date from the same source) and the winner is the highest count. Every round has a decisive winner. |
+| Evan: "We don't want to shit on a company." | All nine series are in the library because they worked. The page says so at the top of every round. The comparison is reach, never quality. Cleveland Clinic is left out because its YouTube count ignores that it aired on HLN, CNN and Hulu, so ranking it by YouTube reach would be unfair. |
+| Tom: "It always says one real person followed for months. No business will spend that. I always change it." | The phrase does not appear anywhere on this page. The one library block that carries it (Cleveland Clinic) is not used. The rule is now in memory so no future card or brief writes it. The block itself still carries the phrase and needs Tom to edit the live card so it can be re-extracted. |
+| Tom on the Precedent Playlist: "We can edit it once and then it won't read like AI." | Every word is in `content.js`. Nothing is generated per visitor. Tom edits the file once and it stays edited. |
+| Evan: "The AI is never going to invent anything. It's just code." | The nine blocks are copied byte for byte from `format-blocks.json` (checked on generation). The only authored text is the round headings, the three questions, the nine option sentences and three short takeaways, all in one file and all labelled "not yet approved by Tom" on the page. |
+
+## Files
+
+| File | What it is |
+|---|---|
+| `index.html` | The page and the engine. One render path for every round and every step. |
+| `content.js` | Every word. `BLOCKS` (nine library blocks, verbatim), `ROUNDS` (three rounds), `COPY` (page text). |
+| `README.md` | This file. |
+
+## How a round works
+
+1. **Rank.** Three cards: the video, the format line and the episode length, all verbatim from the block. Numbers are hidden. The visitor clicks cards in order.
+2. **What actually happened.** The cards sort into their real order and the numbers appear. The visitor sees where their pick came.
+3. **What did the winner do?** One question, three sourced facts, pick one.
+4. **What set the winner apart.** Each fact is attributed to the series it belongs to. The winner's source note, with its link, is shown. Then a short prepared takeaway, labelled for Tom's review.
+
+Score: one for the winner, one for the reason, six in total. The result page lists all three rounds and shows one of two prepared closings.
+
+## What is still open
+
+- Tom has not approved the three round headings, the nine option sentences, the three takeaways or the two closings. The page labels them.
+- The measure is reach (views). Tom may prefer a different measure for some rounds. The `measureStat` index in each round points at which stat the page ranks by, so changing the measure is a one-number edit.
+- Two library blocks still carry wording Tom said he always changes. Cleveland Clinic says "one real person per episode, followed over months" (not used here). YETI says "one real person per episode" (used in round three, rendered verbatim on its card). Blocks only change when Tom edits the live card and it is re-extracted, so both are library fixes, not v8 fixes. Once the YETI block is re-extracted, run `node build-content.js` and the card updates.
+- The language gate has not been run. Mechanical checks only.
+- Not deployed. Evan said he would give permission later.
