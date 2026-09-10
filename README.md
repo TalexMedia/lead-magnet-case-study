@@ -47,7 +47,17 @@ Brand unchanged: same palette tokens, fonts and logo. What changed is depth, rad
 - Screen changes fade out, then children rise in with a stagger.
 - The winner reveal is a sequence: third rises first, then second, then first lands last; platforms grow up from the floor in the same order; the winner's numeral pops and rings, a spotlight fades in behind it, the card pulses once, and the measured figures count up. Compact recaps read in plain order.
 - `prefers-reduced-motion` switches all of it off. The count-up skips when the tab is hidden and has a timer fallback, so a figure is never left at zero.
-- Verification note: the Browser pane is usually a hidden tab, which freezes CSS animations and frame callbacks. Motion was verified from the declared animation names and delays via computed styles, plus logic, layout and console; playback itself needs a visible tab.
+- Verification note: the Browser pane is usually a hidden tab, which freezes CSS animations and frame callbacks. Motion was verified from the declared animation names and delays via computed styles, plus logic, layout and console; playback itself needs a visible tab. The pane is also about 800px wide, inside the phone breakpoint, so the desktop podium grid is checked at a forced 1200px viewport.
+
+## Medals, comparison and the game layer (Evan's second 2026-09-10 pass)
+
+- **Podium grid.** Every column's parts sit in shared grid rows (comparison, card, step), so all three cards share one top and one bottom edge and only the step height varies: 88px gold, 60px silver, 40px bronze, standing on one floor. Third can never sit above second. On phones the columns stack, the steps hide, and a medal-and-label head appears above each card.
+- **Medals.** Gold, silver and bronze as inline SVG (a disc on a charcoal ribbon with the place inside), on each step, on the "Real" side of every comparison, in the phone heads, in the recaps, and on the result tier.
+- **The comparison.** Above each card: "You said" with your numeral, an arrow, "Real" with the medal, and a check or cross with "called it" or "missed it". A miss shows your number ghosted. The full sentence remains as the accessible label.
+- **Points and streak.** A points pill in the sticky header pops and floats a "+1" on every winner or reason called; a streak pill appears from two in a row and resets on a miss.
+- **Tier and confetti.** The result carries a tier pill with a medal: gold "Perfect read" at 6, silver "Sharp eye" at 4 or 5, bronze "First look" below. Four or more triggers a short palette-colored confetti burst on a canvas; off under reduced motion or in a hidden tab. Tier names are prepared copy under the same review label as everything else.
+- The verdict line after a miss now reads "You had X first. Real place: second." rather than repeating the name.
+- Copy changed (two comparison labels, HUD labels, medal names, tier names), so `build-content.js` re-stamped the script URL.
 
 Score: one for the winner, one for the reason, six in total. The result page lists all three rounds and shows one of two prepared closings.
 
