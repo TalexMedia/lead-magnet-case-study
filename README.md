@@ -23,6 +23,7 @@ Built 2026-09-09 from Tom's feedback on the 9 September call. Prototype. Not dep
 |---|---|
 | `index.html` | The page and the engine. One render path for every round and every step. |
 | `content.js` | Every word. `BLOCKS` (nine library blocks, verbatim), `ROUNDS` (three rounds), `COPY` (page text). |
+| `build-content.js` | Regenerates `content.js` from the library and stamps a hash of it onto the `<script src="content.js?v=...">` tag in `index.html`. Run it after any copy change, before deploying. Without the stamp, GitHub Pages can serve a new `index.html` with a stale cached `content.js`, which crashed the rank step on 2026-09-10. |
 | `README.md` | This file. |
 
 ## How a round works

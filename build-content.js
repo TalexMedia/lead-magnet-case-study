@@ -147,6 +147,17 @@ const out = head +
 
 fs.writeFileSync(path.join(__dirname, 'content.js'), out, 'utf8');
 
+// Stamp a content hash onto the script URL so index.html and content.js always
+// travel together. GitHub Pages caches each file separately, and a new engine
+// against a stale cached content.js crashed the rank step on 2026-09-10.
+const hash = require('crypto').createHash('sha256').update(out).digest('hex').slice(0, 10);
+const idxPath = path.join(__dirname, 'index.html');
+const idx = fs.readFileSync(idxPath, 'utf8');
+const stamped = idx.replace(/<script src="content\.js(\?v=[0-9a-f]+)?"><\/script>/, '<script src="content.js?v=' + hash + '"></script>');
+if (stamped === idx && !idx.includes('content.js?v=' + hash)) throw new Error('could not find the content.js script tag in index.html');
+fs.writeFileSync(idxPath, stamped, 'utf8');
+console.log('index.html script tag stamped: content.js?v=' + hash);
+
 // Checks
 let bad = 0;
 for (const id of used) if (JSON.stringify(blocks[id]) !== JSON.stringify(lib[id])) { bad++; console.log('MISMATCH', id); }
