@@ -27,7 +27,7 @@ Built 2026-09-09 from Tom's feedback on the 9 September call. Prototype. Not dep
 
 ## How a round works
 
-1. **Rank.** An instruction bar ("Click the cards below in order: first, then second, then third") and three slots that fill with the series name as each card is clicked. Cards carry the video, the format line and the episode length, all verbatim from the block. Numbers are hidden.
+1. **Rank.** An instruction bar ("Click the cards below in order: first, then second, then third") and three slots that fill with the series name as each card is clicked. Clicking a picked card, or its filled slot, removes that one pick and the others move up; Enter does the same from the keyboard. Reset clears all three. Cards carry the video, the format line and the episode length, all verbatim from the block. Numbers are hidden.
 2. **The real order.** A podium: the three in their sourced order, one to three left to right, first place larger with the tallest platform. Every card carries a chip reading "You said second. Real place: first." or "You said third. Right." so the visitor's ranking sits beside the real one.
 3. **What did the winner do?** One question, three sourced facts, pick one. The winner is named first, per Tom's flow, so this is a second test rather than the same guess again.
 4. **What set the winner apart.** The podium again in compact form, then each fact attributed to its series with "The winner's fact" and "Your answer" chips, the winner's source note with its link, and a short prepared takeaway labelled for Tom's review.
